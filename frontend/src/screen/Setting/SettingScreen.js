@@ -1,12 +1,97 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import COLORS from '../../assets/styles/Colors';
+import Icon from 'react-native-vector-icons/dist/FontAwesome6';
+import {Logout, removeData} from '../../utils';
 
-const SettingScreen = () => {
+const SettingScreen = ({navigation}) => {
+  const logoutAplikasi = async () => {
+    Alert.alert('Perhatian!', 'Anda yakin keluar aplikasi?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+        onPress: () => null,
+      },
+      {
+        text: 'Ya, Keluar!',
+        onPress: async () => {
+          const response = await Logout();
+          if (response) {
+            await removeData('profile');
+            navigation.replace('Start');
+          }
+        },
+      },
+    ]);
+  };
   return (
-    <View>
-      <Text>Halaman Setting</Text>
-    </View>
+    <SafeAreaView style={style.container}>
+      <TouchableOpacity style={style.content}>
+        <View style={style.menuIcon}>
+          <Icon name="user-gear" size={22} />
+        </View>
+        <View style={style.menuView}>
+          <Text style={style.textMenu}>Update Profile</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={style.content}>
+        <View style={style.menuIcon}>
+          <Icon name="calendar-plus" size={22} />
+        </View>
+        <View style={style.menuView}>
+          <Text style={style.textMenu}>Tambah Jadwal</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={style.content}>
+        <View style={style.menuIcon}>
+          <Icon name="plus" size={22} />
+        </View>
+        <View style={style.menuView}>
+          <Text style={style.textMenu}>Tambah Mata Kuliah</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={logoutAplikasi} style={style.content}>
+        <View style={style.menuIcon}>
+          <Icon name="right-from-bracket" size={22} />
+        </View>
+        <View style={style.menuView}>
+          <Text style={style.textMenu}>Keluar Dari Aplikasi</Text>
+        </View>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
-}
+};
 
 export default SettingScreen;
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  content: {
+    marginHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  menuIcon: {
+    marginTop: 20,
+    marginBottom: 10,
+    marginLeft: 40,
+  },
+  menuView: {
+    borderBottomWidth: 1,
+    width: '100%',
+    marginLeft: 12,
+    justifyContent: 'center',
+    height: 60,
+  },
+  textMenu: {fontSize: 20, marginTop: 10, color: COLORS.black},
+});

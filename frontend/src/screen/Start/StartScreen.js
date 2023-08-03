@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,26 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import COLORS from '../../assets/styles/Colors';
 import {Welcome} from '../../assets';
 
 const StartScreen = ({navigation}) => {
+  const backAction = () => {
+    BackHandler.exitApp();
+    return true;
+  };
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
   return (
     <SafeAreaView style={style.container}>
       <StatusBar barStyle={'dark-content'} backgroundColor={COLORS.white} />
@@ -21,7 +36,9 @@ const StartScreen = ({navigation}) => {
       <View style={style.content}>
         <Text style={style.textSiabsensi}>SIABSENSI UNTAD</Text>
         <Text>Sistem Informasi Absensi Universitas Tadulako</Text>
-        <TouchableOpacity onPress={() => navigation.push('Login')} style={style.buttonStart}>
+        <TouchableOpacity
+          onPress={() => navigation.push('Login')}
+          style={style.buttonStart}>
           <Text style={style.textButton}>Get Started</Text>
         </TouchableOpacity>
       </View>
