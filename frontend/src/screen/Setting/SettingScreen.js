@@ -44,7 +44,11 @@ const SettingScreen = ({navigation}) => {
     <SafeAreaView style={style.container}>
       <TouchableOpacity
         style={style.content}
-        onPress={() => navigation.push('ProfileUpdate')}>
+        onPress={
+          profile?.role === 1
+            ? () => navigation.push('ProfileUpdate')
+            : () => navigation.push('UpdateDosen')
+        }>
         <View style={style.menuIcon}>
           <Icon name="user-gear" size={22} />
         </View>
@@ -52,22 +56,28 @@ const SettingScreen = ({navigation}) => {
           <Text style={style.textMenu}>Update Profile</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={style.content}>
-        <View style={style.menuIcon}>
-          <Icon name="calendar-plus" size={22} />
-        </View>
-        <View style={style.menuView}>
-          <Text style={style.textMenu}>Tambah Jadwal</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={style.content}>
-        <View style={style.menuIcon}>
-          <Icon name="plus" size={22} />
-        </View>
-        <View style={style.menuView}>
-          <Text style={style.textMenu}>Tambah Mata Kuliah</Text>
-        </View>
-      </TouchableOpacity>
+      {profile?.role === 3 && (
+        <>
+          <TouchableOpacity
+            onPress={() => navigation.push('TambahJadwal')}
+            style={style.content}>
+            <View style={style.menuIcon}>
+              <Icon name="calendar-plus" size={22} />
+            </View>
+            <View style={style.menuView}>
+              <Text style={style.textMenu}>Tambah Jadwal</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.content}>
+            <View style={style.menuIcon}>
+              <Icon name="plus" size={22} />
+            </View>
+            <View style={style.menuView}>
+              <Text style={style.textMenu}>Tambah Mata Kuliah</Text>
+            </View>
+          </TouchableOpacity>
+        </>
+      )}
       <TouchableOpacity onPress={logoutAplikasi} style={style.content}>
         <View style={style.menuIcon}>
           <Icon name="right-from-bracket" size={22} />

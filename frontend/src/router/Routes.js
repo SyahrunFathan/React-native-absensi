@@ -13,6 +13,7 @@ import {
   SplashScreen,
   StartScreen,
   UpdateDosen,
+  TambahJadwal,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -125,6 +126,14 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Edit Profile',
+        }}
+      />
+      <Stack.Screen
+        name="TambahJadwal"
+        component={TambahJadwal}
+        options={{
+          headerShown: true,
+          title: 'Jadwal Manajemen',
         }}
       />
     </Stack.Navigator>

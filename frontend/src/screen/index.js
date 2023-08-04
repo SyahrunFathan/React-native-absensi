@@ -1,6 +1,7 @@
 import AbsenScreen from './Absen/AbsenScreen';
 import HomeScreen from './Home/HomeScreen';
 import JadwalScreen from './Jadwal/JadwalScreen';
+import TambahJadwal from './Jadwal/TambahJadwal';
 import KehadiranScreen from './Kehadiran/KehadiranScreen';
 import LoginScreen from './Login/LoginScreen';
 import ProfileScreen from './Profile/ProfileScreen';
@@ -22,4 +23,5 @@ export {
   SettingScreen,
   ProfileUpdateScreen,
   UpdateDosen,
+  TambahJadwal,
 };
