@@ -162,13 +162,17 @@ export const Logout = async(req, res) => {
     const token = req.cookies.token
     if(!token) return res.sendStatus(204)
     const mahasiswa = await ModelMahasiswa.findAll({where: {token: token}})
+    const dosen = await ModelDosen.findAll({where: {token: token}})
+    const admin = await ModelAdmin.findAll({where: {token: token}})
     if(mahasiswa[0]){
         const id_mhs = mahasiswa[0].id_mhs
         await ModelMahasiswa.update({token: null}, {where: {id_mhs: id_mhs}})
-    }else{
-        const dosen = await ModelDosen.findAll({where: {token: token}})
+    }else if(dosen[0]){
         const id_dosen = dosen[0].id_dosen
         await ModelDosen.update({token: null},{where: {id_dosen: id_dosen}})
+    }else{
+        const id_admin = admin[0].id_admin
+        await ModelAdmin.update({token: token},{where: {id_admin: id_admin}})
     }
 
     res.clearCookie('token')
