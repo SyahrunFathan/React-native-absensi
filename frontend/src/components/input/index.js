@@ -2,7 +2,14 @@ import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 import COLORS from '../../assets/styles/Colors';
 
-const Input = ({onChangeText, value, placeHolder, secureTextEntry, keyboardType}) => {
+const Input = ({
+  onChangeText,
+  value,
+  placeHolder,
+  secureTextEntry,
+  keyboardType,
+  editable,
+}) => {
   return (
     <TextInput
       style={style.formInput}
@@ -11,6 +18,7 @@ const Input = ({onChangeText, value, placeHolder, secureTextEntry, keyboardType}
       value={value}
       secureTextEntry={secureTextEntry}
       keyboardType={keyboardType}
+      editable={editable}
     />
   );
 };

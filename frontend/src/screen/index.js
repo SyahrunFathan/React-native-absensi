@@ -4,6 +4,8 @@ import JadwalScreen from './Jadwal/JadwalScreen';
 import KehadiranScreen from './Kehadiran/KehadiranScreen';
 import LoginScreen from './Login/LoginScreen';
 import ProfileScreen from './Profile/ProfileScreen';
+import ProfileUpdateScreen from './Profile/ProfileUpdateScreen';
+import UpdateDosen from './Profile/UpdateDosen';
 import SettingScreen from './Setting/SettingScreen';
 import SplashScreen from './Splash/SplashScreen';
 import StartScreen from './Start/StartScreen';
@@ -17,5 +19,7 @@ export {
   ProfileScreen,
   JadwalScreen,
   KehadiranScreen,
-  SettingScreen
+  SettingScreen,
+  ProfileUpdateScreen,
+  UpdateDosen,
 };

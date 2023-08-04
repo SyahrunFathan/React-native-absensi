@@ -62,6 +62,7 @@ const LoginScreen = ({navigation}) => {
             <Input
               onChangeText={text => setForm('username', text)}
               placeHolder="Enter your username"
+              value={form.username}
             />
             <View style={style.icon}>
               <Icon name="person" size={18} />

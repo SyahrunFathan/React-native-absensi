@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import COLORS from '../../assets/styles/Colors';
 import Icon from 'react-native-vector-icons/dist/FontAwesome6';
-import {Logout, removeData} from '../../utils';
+import {Logout, getData, removeData} from '../../utils';
 
 const SettingScreen = ({navigation}) => {
+  const [profile, setProfile] = useState([]);
   const logoutAplikasi = async () => {
     Alert.alert('Perhatian!', 'Anda yakin keluar aplikasi?', [
       {
@@ -31,9 +32,19 @@ const SettingScreen = ({navigation}) => {
       },
     ]);
   };
+
+  useEffect(() => {
+    const AmbilData = async () => {
+      const response = await getData('profile');
+      setProfile(response?.result);
+    };
+    AmbilData();
+  }, []);
   return (
     <SafeAreaView style={style.container}>
-      <TouchableOpacity style={style.content}>
+      <TouchableOpacity
+        style={style.content}
+        onPress={() => navigation.push('ProfileUpdate')}>
         <View style={style.menuIcon}>
           <Icon name="user-gear" size={22} />
         </View>

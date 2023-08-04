@@ -7,7 +7,7 @@ import NetInfo from '@react-native-community/netinfo'
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
-    const handleConnectInternet = (state) => {
+    const handleConnectInternet = state => {
       if (state.isConnected) {
         ReloadScreen();
       } else {
@@ -15,21 +15,24 @@ const SplashScreen = ({navigation}) => {
           {
             text: 'Ok!',
             onPress: () => BackHandler.exitApp(),
-          }
+          },
         ]);
       }
-    }
-    const ReloadScreen = async() => {
-      const response = await getData('profile')
+    };
+    const ReloadScreen = async () => {
+      const response = await getData('profile');
       setTimeout(() => {
-        if(response){
-          navigation.replace('Main')
-        }else{
-          navigation.replace('Start')
+        if (response) {
+          navigation.replace('Main');
+        } else {
+          navigation.replace('Start');
         }
       }, 1500);
-    }
-    NetInfo.addEventListener(handleConnectInternet)
+    };
+    // setTimeout(() => {
+    //   navigation.replace('Start');
+    // }, 1500);
+    NetInfo.addEventListener(handleConnectInternet);
   },[])
   return (
     <SafeAreaView style={style.container}>

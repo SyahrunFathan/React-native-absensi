@@ -21,7 +21,7 @@ const ProfileScreen = ({navigation}) => {
       setProfile(response?.result);
     };
     AmbilData();
-  }, []);
+  }, [profile]);
   return (
     <SafeAreaView style={style.container}>
       <StatusBar backgroundColor={COLORS.white} barStyle={'dark-content'} />
@@ -34,7 +34,10 @@ const ProfileScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={style.contentProfile}>
-          <Image source={Default} style={style.imageProfile} />
+          <Image
+            source={profile?.url ? {uri: profile?.url} : Default}
+            style={style.imageProfile}
+          />
           <View style={style.contentProfileRight}>
             <Text style={style.textBold}>{profile?.name}</Text>
             {profile?.role === 1 ? (

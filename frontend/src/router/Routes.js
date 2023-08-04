@@ -8,9 +8,11 @@ import {
   KehadiranScreen,
   LoginScreen,
   ProfileScreen,
+  ProfileUpdateScreen,
   SettingScreen,
   SplashScreen,
   StartScreen,
+  UpdateDosen,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -83,14 +85,48 @@ const MainApp = () => {
 
 const Routes = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Splash"
-      screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="Start" component={StartScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Main" component={MainApp} />
-      <Stack.Screen name="Setting" component={SettingScreen} options={{headerShown: true, title: 'Pengaturan'}} />
+    <Stack.Navigator initialRouteName="Splash">
+      <Stack.Screen
+        name="Splash"
+        component={SplashScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Start"
+        component={StartScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Main"
+        component={MainApp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Setting"
+        component={SettingScreen}
+        options={{headerShown: true, title: 'Pengaturan'}}
+      />
+      <Stack.Screen
+        name="ProfileUpdate"
+        component={ProfileUpdateScreen}
+        options={{
+          headerShown: true,
+          title: 'Edit Profile',
+        }}
+      />
+      <Stack.Screen
+        name="UpdateDosen"
+        component={UpdateDosen}
+        options={{
+          headerShown: true,
+          title: 'Edit Profile',
+        }}
+      />
     </Stack.Navigator>
   );
 };
