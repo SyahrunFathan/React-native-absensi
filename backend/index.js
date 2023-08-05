@@ -12,6 +12,7 @@ import RouteAuth from './router/RouteAuth.js'
 import RouteAbsen from './router/RouteAbsen.js'
 import RouteAdmin from './router/RouterAdmin.js'
 import RouteMahasiswa from './router/RouteMahasiswa.js'
+import RouteDosen from './router/RouteDosen.js'
 
 const app = express()
 
@@ -29,7 +30,8 @@ try {
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-app.use(RouteMahasiswa)
+app.use("/mahasiswa", RouteMahasiswa)
+app.use("/dosen", RouteDosen)
 app.use(RouteAuth)
 app.use(RouteAbsen)
 app.use(RouteAdmin)

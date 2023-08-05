@@ -59,8 +59,7 @@ const ProfileUpdateScreen = () => {
       setTelpon(response?.result?.telp);
     };
     Reload();
-    console.log(tanggalLahir);
-  }, []);
+  }, [id]);
 
   const handleSubmit = async () => {
     let formData = new FormData();

@@ -14,6 +14,7 @@ import {
   StartScreen,
   UpdateDosen,
   TambahJadwal,
+  UpdateAdmin,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -110,7 +111,11 @@ const Routes = () => {
       <Stack.Screen
         name="Setting"
         component={SettingScreen}
-        options={{headerShown: true, title: 'Pengaturan'}}
+        options={{
+          headerShown: true,
+          title: 'Pengaturan',
+          headerTitleAlign: 'center',
+        }}
       />
       <Stack.Screen
         name="ProfileUpdate"
@@ -118,6 +123,7 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Edit Profile',
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen
@@ -126,6 +132,16 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Edit Profile',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="UpdateAdmin"
+        component={UpdateAdmin}
+        options={{
+          headerShown: true,
+          title: 'Edit Profile',
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen

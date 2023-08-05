@@ -6,6 +6,7 @@ import KehadiranScreen from './Kehadiran/KehadiranScreen';
 import LoginScreen from './Login/LoginScreen';
 import ProfileScreen from './Profile/ProfileScreen';
 import ProfileUpdateScreen from './Profile/ProfileUpdateScreen';
+import UpdateAdmin from './Profile/UpdateAdmin';
 import UpdateDosen from './Profile/UpdateDosen';
 import SettingScreen from './Setting/SettingScreen';
 import SplashScreen from './Splash/SplashScreen';
@@ -24,4 +25,5 @@ export {
   ProfileUpdateScreen,
   UpdateDosen,
   TambahJadwal,
+  UpdateAdmin,
 };

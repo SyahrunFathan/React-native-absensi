@@ -4,6 +4,6 @@ import { Authenticate } from '../middleware/Authenticate.js'
 
 const router = express.Router()
 
-router.patch('/mahasiswa/update/:id', Authenticate, upload.single('file'), updateMahasiswa)
+router.patch('/update/:id', Authenticate, upload.single('file'), updateMahasiswa)
 
 export default router

@@ -47,7 +47,9 @@ const SettingScreen = ({navigation}) => {
         onPress={
           profile?.role === 1
             ? () => navigation.push('ProfileUpdate')
-            : () => navigation.push('UpdateDosen')
+            : profile.role === 2
+            ? () => navigation.push('UpdateDosen')
+            : () => navigation.push('UpdateAdmin')
         }>
         <View style={style.menuIcon}>
           <Icon name="user-gear" size={22} />

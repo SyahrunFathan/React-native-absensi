@@ -30,3 +30,13 @@ export const updateMahasiswa = async (id, data) => {
     },
   });
 };
+
+// Update data dosen
+export const updateDataDosen = async(id, data) => {
+  return API.patch(`/dosen/update_data_dosen/${id}`, data, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
