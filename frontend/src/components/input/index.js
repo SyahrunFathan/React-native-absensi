@@ -9,6 +9,7 @@ const Input = ({
   secureTextEntry,
   keyboardType,
   editable,
+  autoFocus,
 }) => {
   return (
     <TextInput
@@ -19,6 +20,7 @@ const Input = ({
       secureTextEntry={secureTextEntry}
       keyboardType={keyboardType}
       editable={editable}
+      autoFocus={autoFocus}
     />
   );
 };

@@ -55,3 +55,10 @@ export const updateDataAdmin = async (id, data) => {
 export const updateDataPassword = async(id, data) => {
   return API.patch(`/auth/update_password/${id}`, data)
 }
+
+// Get data dosen
+export const getDataDosen = async() => API.get('/dosen/data')
+
+// create data mata kuliah
+export const createDataMataKuliah = async(data) => API.post('/mata_kuliah/create_data', data)
+export const generatorCode = async() => API.get('/mata_kuliah/generator_code')

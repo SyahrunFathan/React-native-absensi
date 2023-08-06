@@ -16,6 +16,7 @@ import {
   TambahJadwal,
   UpdateAdmin,
   PasswordUpdate,
+  MatkulScreen,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -151,6 +152,20 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Jadwal Manajemen',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="Matkul"
+        component={MatkulScreen}
+        options={{
+          headerShown: true,
+          title: 'Perkuliahan',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: COLORS.black,
+            fontWeight: 'bold',
+          },
         }}
       />
       <Stack.Screen

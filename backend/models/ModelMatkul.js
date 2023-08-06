@@ -10,8 +10,14 @@ const ModelMatkul = db.define('tb_matkul',{
         primaryKey: true,
         type: DataTypes.INTEGER
     },
+    kode_matkul: {
+        type: DataTypes.CHAR
+    },
     nama_matkul: {
         type: DataTypes.STRING
+    },
+    sks_matkul: {
+        type: DataTypes.INTEGER
     },
     dosen_id: {
         type: DataTypes.INTEGER

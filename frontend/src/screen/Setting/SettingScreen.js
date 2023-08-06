@@ -82,7 +82,9 @@ const SettingScreen = ({navigation}) => {
               <Text style={style.textMenu}>Tambah Jadwal</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={style.content}>
+          <TouchableOpacity
+            onPress={() => navigation.push('Matkul')}
+            style={style.content}>
             <View style={style.menuIcon}>
               <Icon name="plus" size={22} />
             </View>
