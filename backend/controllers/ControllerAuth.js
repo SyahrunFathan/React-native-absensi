@@ -179,3 +179,62 @@ export const Logout = async(req, res) => {
 
     res.status(200).json({message: 'Logout Berhasil!'})
 }
+
+export const updatePassword = async(req, res) => {
+    const {passwordOld, password, confirmPassword, role} = req.body;
+    if(role === 1){
+        try {
+            const mahasiswa = await ModelMahasiswa.findAll({where: {id_mhs: req.params.id}})
+            const match = await bcrypt.compare(passwordOld, mahasiswa[0].password)
+            const validationPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+            if(passwordOld === '') return res.status(400).json({message: 'Password lama anda tidak boleh kosong!', error: 'passwordOld'})
+            if(!match) return res.status(400).json({message: 'Password anda salah', error: 'passwordOld'})
+            if(password === '') return res.status(400).json({message: 'Password tidak boleh kosong!', error: 'password'})
+            if(password.length <= 8) return res.status(400).json({message: 'Password tidak kurang dari 8!', error: 'password'})
+            if(!validationPassword.test(password)) return res.status(400).json({message: 'Password setidaknya memiliki 1 angka, 1 karakter khusus, 1 huruf besar, dan 1 huruf kecil!', error: 'password'})
+            if(confirmPassword === '') return res.status(400).json({message: 'Confirm password tidak boleh kosong!', error: 'confirmPassword'})
+            if(confirmPassword !== password) return res.status(400).json({message: 'Password tidak cocok!', error: 'confirmPassword'});
+            const salt = await bcrypt.genSalt()
+            const hashingPassword = await bcrypt.hash(confirmPassword, salt)
+
+            await ModelMahasiswa.update({
+                password: hashingPassword
+            }, {
+                where: {
+                    id_mhs: req.params.id
+                }
+            })
+
+            res.status(200).json({message: 'Anda berhasil mengubah password'})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+    }else{
+        try {
+            const dosen = await ModelDosen.findAll({where: {id_dosen: req.params.id}})
+            const match = await bcrypt.compare(passwordOld, dosen[0].password)
+            const validationPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+            if(passwordOld === '') return res.status(400).json({message: 'Password lama anda tidak boleh kosong!', error: 'passwordOld'})
+            if(!match) return res.status(400).json({message: 'Password anda salah!', error: 'passwordOld'})
+            if(password === '') return res.status(400).json({message: 'Password tidak boleh kosong!', error: 'password'})
+            if(password.length <= 8) return res.status(400).json({message: 'Password tidak kurang dari 8!', error: 'password'})
+            if(!validationPassword.test(password)) return res.status(400).json({message: 'Password setidaknya memiliki 1 angka, 1 karakter khusus, 1 huruf besar, dan 1 huruf kecil!', error: 'password'})
+            if(confirmPassword === '') return res.status(400).json({message: 'Confirm password tidak boleh kosong!', error: 'confirmPassword'})
+            if(confirmPassword !== password) return res.status(400).json({message: 'Password tidak cocok!', error: 'confirmPassword'});
+            const salt = await bcrypt.genSalt()
+            const hashingPassword = await bcrypt.hash(confirmPassword, salt)
+
+            await ModelDosen.update({
+                password: hashingPassword
+            }, {
+                where: {
+                    id_dosen: req.params.id
+                }
+            })
+
+            res.status(200).json({message: 'Anda berhasil mengubah password'})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+    }
+}

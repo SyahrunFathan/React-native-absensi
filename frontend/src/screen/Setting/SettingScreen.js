@@ -58,6 +58,18 @@ const SettingScreen = ({navigation}) => {
           <Text style={style.textMenu}>Update Profile</Text>
         </View>
       </TouchableOpacity>
+      {profile?.role === 1 || profile?.role === 2 ? (
+        <TouchableOpacity
+          onPress={() => navigation.push('UbahPassword')}
+          style={style.content}>
+          <View style={style.menuIcon}>
+            <Icon name="key" size={22} />
+          </View>
+          <View style={style.menuView}>
+            <Text style={style.textMenu}>Ubah Password</Text>
+          </View>
+        </TouchableOpacity>
+      ) : null}
       {profile?.role === 3 && (
         <>
           <TouchableOpacity

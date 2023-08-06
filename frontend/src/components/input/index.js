@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, StyleSheet} from 'react-native';
+import {TextInput, StyleSheet, View} from 'react-native';
 import COLORS from '../../assets/styles/Colors';
 
 const Input = ({
@@ -26,14 +26,15 @@ const Input = ({
 const style = StyleSheet.create({
   formInput: {
     width: '100%',
-    paddingLeft: 10,
-    paddingRight: 28,
-    borderRadius: 10,
+    paddingLeft: 14,
+    fontSize: 16,
+    borderColor: COLORS.grey,
+    borderWidth: 1,
+    overflow: 'hidden',
     shadowColor: COLORS.grey,
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 2,
+    shadowOpacity: 1,
+    borderRadius: 10,
   },
 });
 

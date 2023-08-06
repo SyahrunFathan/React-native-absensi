@@ -40,3 +40,18 @@ export const updateDataDosen = async(id, data) => {
     },
   });
 }
+
+// Update data admin
+export const updateDataAdmin = async (id, data) => {
+  return API.patch(`/admin/update/${id}`, data, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};
+
+// Update Password
+export const updateDataPassword = async(id, data) => {
+  return API.patch(`/auth/update_password/${id}`, data)
+}

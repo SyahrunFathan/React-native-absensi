@@ -15,6 +15,7 @@ import {
   UpdateDosen,
   TambahJadwal,
   UpdateAdmin,
+  PasswordUpdate,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -150,6 +151,15 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Jadwal Manajemen',
+        }}
+      />
+      <Stack.Screen
+        name="UbahPassword"
+        component={PasswordUpdate}
+        options={{
+          headerShown: true,
+          title: 'Keamanan Akun',
+          headerTitleAlign: 'center',
         }}
       />
     </Stack.Navigator>

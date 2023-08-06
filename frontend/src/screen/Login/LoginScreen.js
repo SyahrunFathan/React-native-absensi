@@ -164,7 +164,8 @@ const style = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: COLORS.grey,
   },
   icon: {
     position: 'absolute',

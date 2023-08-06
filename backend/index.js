@@ -32,9 +32,9 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/mahasiswa", RouteMahasiswa)
 app.use("/dosen", RouteDosen)
-app.use(RouteAuth)
+app.use("/admin",RouteAdmin)
+app.use("/auth", RouteAuth)
 app.use(RouteAbsen)
-app.use(RouteAdmin)
 
 app.use('/public/images', express.static(path.join(__dirname, 'public/images')))
 

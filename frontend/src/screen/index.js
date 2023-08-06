@@ -4,6 +4,7 @@ import JadwalScreen from './Jadwal/JadwalScreen';
 import TambahJadwal from './Jadwal/TambahJadwal';
 import KehadiranScreen from './Kehadiran/KehadiranScreen';
 import LoginScreen from './Login/LoginScreen';
+import PasswordUpdate from './Profile/PasswordUpdate';
 import ProfileScreen from './Profile/ProfileScreen';
 import ProfileUpdateScreen from './Profile/ProfileUpdateScreen';
 import UpdateAdmin from './Profile/UpdateAdmin';
@@ -26,4 +27,5 @@ export {
   UpdateDosen,
   TambahJadwal,
   UpdateAdmin,
+  PasswordUpdate,
 };
