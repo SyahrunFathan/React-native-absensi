@@ -30,7 +30,7 @@ const PasswordUpdate = ({navigation}) => {
         navigation.navigate('Profile');
       }
     } catch (error) {
-      if (error.response) {
+      if (error.response && error.response.status === 400) {
         if (error.response.data.error === 'passwordOld') {
           setIsErrorPasswordOld(error.response.data.message);
         } else {

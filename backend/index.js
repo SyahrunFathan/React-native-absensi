@@ -9,11 +9,11 @@ import { fileURLToPath } from 'url'
 dotenv.config()
 
 import RouteAuth from './router/RouteAuth.js'
-import RouteAbsen from './router/RouteAbsen.js'
 import RouteAdmin from './router/RouterAdmin.js'
 import RouteMahasiswa from './router/RouteMahasiswa.js'
 import RouteDosen from './router/RouteDosen.js'
 import RouteMatkul from './router/RouteMatkul.js'
+import RouteJadwal from './router/RouteJadwal.js'
 
 const app = express()
 
@@ -36,7 +36,7 @@ app.use("/dosen", RouteDosen)
 app.use("/admin",RouteAdmin)
 app.use("/auth", RouteAuth)
 app.use("/mata_kuliah", RouteMatkul)
-app.use(RouteAbsen)
+app.use("/jadwal", RouteJadwal)
 
 app.use('/public/images', express.static(path.join(__dirname, 'public/images')))
 

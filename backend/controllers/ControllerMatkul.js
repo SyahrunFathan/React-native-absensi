@@ -9,7 +9,7 @@ export const createData = async(req, res) => {
 
     try {
         const checkData = await ModelMatkul.findAll({where: {nama_matkul: matkul}})
-        if(checkData) return res.status(400).json({message: 'Mata kuliah ini sudah ada!'})
+        if(checkData[0]) return res.status(400).json({message: 'Mata kuliah ini sudah ada!'})
         await ModelMatkul.create({
             kode_matkul: kodeMatkul,
             nama_matkul: matkul,
@@ -30,6 +30,16 @@ export const generatorCode = async(req, res) => {
         const code = `F${formatDate}`
 
         res.status(200).json({code: code})
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+}
+
+export const getDataMatkul = async(req, res) => {
+    try {
+        const response = await ModelMatkul.findAll()
+
+        res.status(200).json({result: response})
     } catch (error) {
         res.status(500).json({message: error})
     }

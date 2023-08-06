@@ -21,7 +21,7 @@ export const Logout = async id => {
   return API.delete(`/auth/logout/${id}`);
 };
 
-// Update data mahasiswa
+// Mahasiswa
 export const updateMahasiswa = async (id, data) => {
   return API.patch(`/mahasiswa/update/${id}`, data, {
     headers: {
@@ -31,17 +31,7 @@ export const updateMahasiswa = async (id, data) => {
   });
 };
 
-// Update data dosen
-export const updateDataDosen = async(id, data) => {
-  return API.patch(`/dosen/update_data_dosen/${id}`, data, {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-}
-
-// Update data admin
+// Admin
 export const updateDataAdmin = async (id, data) => {
   return API.patch(`/admin/update/${id}`, data, {
     headers: {
@@ -56,9 +46,21 @@ export const updateDataPassword = async(id, data) => {
   return API.patch(`/auth/update_password/${id}`, data)
 }
 
-// Get data dosen
+// Dosen
 export const getDataDosen = async() => API.get('/dosen/data')
+export const updateDataDosen = async (id, data) => {
+  return API.patch(`/dosen/update_data_dosen/${id}`, data, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};
 
-// create data mata kuliah
+//  Mata kuliah
 export const createDataMataKuliah = async(data) => API.post('/mata_kuliah/create_data', data)
 export const generatorCode = async() => API.get('/mata_kuliah/generator_code')
+export const getDataMatkul = async () => API.get('/mata_kuliah/get_data');
+
+// Jadwal
+export const postJadwal = async(data) => API.post('/jadwal/post', data)

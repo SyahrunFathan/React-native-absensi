@@ -65,7 +65,6 @@ const MainApp = () => {
         },
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.grey,
-        headerShown: false,
         tabBarLabelStyle: {
           paddingBottom: 5,
           fontSize: 14,
@@ -75,14 +74,30 @@ const MainApp = () => {
           height: 60,
         },
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Jadwal" component={JadwalScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Jadwal"
+        component={JadwalScreen}
+        options={{
+          title: 'Jadwal Saya',
+          headerShown: true,
+          headerTitleAlign: 'center',
+        }}
+      />
       {profile?.role === 1 ? (
         <Tab.Screen name="Kehadiran" component={KehadiranScreen} />
       ) : (
         <Tab.Screen name="Absen" component={AbsenScreen} />
       )}
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };
