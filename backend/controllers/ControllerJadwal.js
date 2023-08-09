@@ -1,5 +1,6 @@
 import ModelJadwal from '../models/ModelJadwal.js'
 import { Op } from 'sequelize';
+import ModelMatkul from '../models/ModelMatkul.js';
 
 export const createDataJadwal = async(req, res) => {
     const {idMatkul, hari, jamMulai, jamSelesai} = req.body;
@@ -38,6 +39,15 @@ export const createDataJadwal = async(req, res) => {
         })
 
         res.status(201).json({message: 'Jadwal berhasil di simpan!'})
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+}
+
+export const getDataJoinMatkul = async(req, res) => {
+    try {
+        const response = await ModelJadwal.findAll({include: ModelMatkul})
+        res.status(200).json({result: response})
     } catch (error) {
         res.status(500).json({message: error})
     }

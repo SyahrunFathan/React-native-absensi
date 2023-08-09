@@ -1,11 +1,14 @@
 import { format } from "date-fns";
 import ModelMatkul from "../models/ModelMatkul.js";
+import ModelJadwal from "../models/ModelJadwal.js";
+import ModelKrs from "../models/ModelKrs.js";
+import { Op, Sequelize } from "sequelize";
 
 export const createData = async(req, res) => {
     const {idDosen, matkul, jumlahSks, kodeMatkul} = req.body;
-    if(idDosen === '') return res.status(400).json({message: 'Pilih dosen terlebih dahulu!'})
     if(matkul === '') return res.status(400).json({message: 'Isi mata kuliah terlebih dahulu!'})
     if(jumlahSks === '') return res.status(400).json({message: 'Jumlah SKS harus terisi!'})
+    if(idDosen === '') return res.status(400).json({message: 'Pilih dosen terlebih dahulu!'})
 
     try {
         const checkData = await ModelMatkul.findAll({where: {nama_matkul: matkul}})
@@ -44,3 +47,41 @@ export const getDataMatkul = async(req, res) => {
         res.status(500).json({message: error})
     }
 }
+
+export const getDataMatkulJoinToJadwal = async(req, res) => {
+    try {
+        const response = await ModelMatkul.findAll({
+            include:{
+                model: ModelJadwal,
+                as: 'jadwal',
+                foreignKey: 'matkul_id',
+            },
+            where:{
+                id_matkul: {[Op.notIn]: Sequelize.literal(`(SELECT matkul_id FROM ${ModelKrs.getTableName()})`)}
+            }
+        })
+        res.status(200).json({result: response})
+    } catch (error) {
+        res.status(500).json({message: error})
+    }
+}
+
+// export const getDataByUser = async(req, res) => {
+//     try {
+//         const response = await ModelKrs.findAll({
+//             include: {
+//                 model: ModelJadwal,
+//                 as: 'jadwal',
+//                 foreignKey: 'matkul_id',
+//             },
+//             where: {
+//                 mhs_id: {
+//                     [Op.in]: Sequelize.literal(`(SELECT )`)
+//                 }
+//             }
+//         })
+//         res.status(200).json({result: response})
+//     } catch (error) {
+//         res.status(500).json({message: error})
+//     }
+// }

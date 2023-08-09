@@ -94,6 +94,28 @@ const SettingScreen = ({navigation}) => {
           </TouchableOpacity>
         </>
       )}
+      {profile?.role === 1 && (
+        <>
+          <TouchableOpacity
+            onPress={() => navigation.push('Krs')}
+            style={style.content}>
+            <View style={style.menuIcon}>
+              <Icon name="file" size={22} />
+            </View>
+            <View style={style.menuView}>
+              <Text style={style.textMenu}>KRS Saya</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={logoutAplikasi} style={style.content}>
+            <View style={style.menuIcon}>
+              <Icon name="print" size={22} />
+            </View>
+            <View style={style.menuView}>
+              <Text style={style.textMenu}>Nilai Saya</Text>
+            </View>
+          </TouchableOpacity>
+        </>
+      )}
       <TouchableOpacity onPress={logoutAplikasi} style={style.content}>
         <View style={style.menuIcon}>
           <Icon name="right-from-bracket" size={22} />

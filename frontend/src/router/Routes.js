@@ -17,6 +17,7 @@ import {
   UpdateAdmin,
   PasswordUpdate,
   MatkulScreen,
+  KrsScreen,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -189,6 +190,15 @@ const Routes = () => {
         options={{
           headerShown: true,
           title: 'Keamanan Akun',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="Krs"
+        component={KrsScreen}
+        options={{
+          headerShown: true,
+          title: 'Perencanaan Studi',
           headerTitleAlign: 'center',
         }}
       />

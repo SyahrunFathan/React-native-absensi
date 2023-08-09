@@ -3,6 +3,7 @@ import HomeScreen from './Home/HomeScreen';
 import JadwalScreen from './Jadwal/JadwalScreen';
 import TambahJadwal from './Jadwal/TambahJadwal';
 import KehadiranScreen from './Kehadiran/KehadiranScreen';
+import KrsScreen from './Krs/KrsScreen';
 import LoginScreen from './Login/LoginScreen';
 import MatkulScreen from './MataKuliah/MatkulScreen';
 import PasswordUpdate from './Profile/PasswordUpdate';
@@ -30,4 +31,5 @@ export {
   UpdateAdmin,
   PasswordUpdate,
   MatkulScreen,
+  KrsScreen,
 };

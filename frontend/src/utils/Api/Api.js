@@ -42,12 +42,12 @@ export const updateDataAdmin = async (id, data) => {
 };
 
 // Update Password
-export const updateDataPassword = async(id, data) => {
-  return API.patch(`/auth/update_password/${id}`, data)
-}
+export const updateDataPassword = async (id, data) => {
+  return API.patch(`/auth/update_password/${id}`, data);
+};
 
 // Dosen
-export const getDataDosen = async() => API.get('/dosen/data')
+export const getDataDosen = async () => API.get('/dosen/data');
 export const updateDataDosen = async (id, data) => {
   return API.patch(`/dosen/update_data_dosen/${id}`, data, {
     headers: {
@@ -58,9 +58,16 @@ export const updateDataDosen = async (id, data) => {
 };
 
 //  Mata kuliah
-export const createDataMataKuliah = async(data) => API.post('/mata_kuliah/create_data', data)
-export const generatorCode = async() => API.get('/mata_kuliah/generator_code')
+export const createDataMataKuliah = async data =>
+  API.post('/mata_kuliah/create_data', data);
+export const generatorCode = async () => API.get('/mata_kuliah/generator_code');
 export const getDataMatkul = async () => API.get('/mata_kuliah/get_data');
+export const getDataMatkulJoinToJadwal = async () =>
+  API.get('/mata_kuliah/get_data_join');
 
 // Jadwal
-export const postJadwal = async(data) => API.post('/jadwal/post', data)
+export const postJadwal = async data => API.post('/jadwal/post', data);
+
+// Krs
+export const postKrs = async data => API.post('/krs/post_krs', data);
+export const getDataKrs = async id => API.get(`/krs/get_data_krs/${id}`);

@@ -1,10 +1,11 @@
 import {Sequelize} from 'sequelize'
 import db from '../config/Database.js'
+import ModelMahasiswa from './ModelMahasiswa.js'
 
 const {DataTypes} = Sequelize;
 
-const ModelJadwal = db.define('tb_jadwal',{
-    id_jadwal: {
+const ModelKrs = db.define('tb_krs',{
+    id_krs:{
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
@@ -12,18 +13,14 @@ const ModelJadwal = db.define('tb_jadwal',{
     matkul_id: {
         type: DataTypes.INTEGER
     },
-    hari: {
-        type: DataTypes.STRING
-    },
-    jam_mulai: {
-        type: DataTypes.TIME
-    },
-    jam_selesai: {
-        type: DataTypes.TIME
+    mhs_id: {
+        type: DataTypes.INTEGER
     }
 },{
     freezeTableName: true
 })
 
+// ModelKrs.belongsTo(ModelMatkul, {foreignKey: 'matkul_id'})
+ModelKrs.belongsTo(ModelMahasiswa,{foreignKey: 'mhs_id'})
 
-export default ModelJadwal;
+export default ModelKrs;

@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import db from './config/Database.js'
 import path, {dirname} from 'path'
 import { fileURLToPath } from 'url'
-// import Model from './models/ModelMatkul.js'
+// import Model from './models/ModelKrs.js'
 dotenv.config()
 
 import RouteAuth from './router/RouteAuth.js'
@@ -14,6 +14,7 @@ import RouteMahasiswa from './router/RouteMahasiswa.js'
 import RouteDosen from './router/RouteDosen.js'
 import RouteMatkul from './router/RouteMatkul.js'
 import RouteJadwal from './router/RouteJadwal.js'
+import RouteKrs from './router/RouteKrs.js'
 
 const app = express()
 
@@ -37,6 +38,7 @@ app.use("/admin",RouteAdmin)
 app.use("/auth", RouteAuth)
 app.use("/mata_kuliah", RouteMatkul)
 app.use("/jadwal", RouteJadwal)
+app.use("/krs", RouteKrs)
 
 app.use('/public/images', express.static(path.join(__dirname, 'public/images')))
 

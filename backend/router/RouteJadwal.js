@@ -1,5 +1,5 @@
 import express from 'express'
-import { createDataJadwal } from '../controllers/ControllerJadwal.js'
+import { createDataJadwal, getDataJoinMatkul } from '../controllers/ControllerJadwal.js'
 import {Authenticate} from '../middleware/Authenticate.js'
 
 const router = express.Router()
