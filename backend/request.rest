@@ -2,8 +2,8 @@ POST http://localhost:5001/auth/login
 Content-Type: application/json
 
 {
-    "username": "Admin",
-    "password": "Admin",
+    "username": "Syahrun Fathan Hidayah",
+    "password": "@Syahrun19",
     "role": 3
 }
 
@@ -11,14 +11,14 @@ Content-Type: application/json
 ###
 POST http://localhost:5001/auth/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6MSwibmFtZSI6IkFkbWluIiwiaWF0IjoxNjkwOTUzNjg1LCJleHAiOjE2OTEwNDAwODV9.7QqXcR-PedMDA5Dev9yeu6I42RqMLcA2ox0buWsBrHI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6MSwibmFtZSI6IlN5YWhydW4gRmF0aGFuIEhpZGF5YWgiLCJpYXQiOjE2OTE2MzY0NTEsImV4cCI6MTY5MTcyMjg1MX0.mT2MvyTW3aBaT3zW6c0jqUuIYXttWRBzjmlW9YgzVUg
 
 {
-    "nim": "197261721890002",
-    "nama": "Syaiful Hendra",
-    "alamat": "Jalan Lelemina",
+    "nim": "F55120121",
+    "nama": "Resti Amanda",
+    "alamat": "Pasangkayu",
     "telp": "081342504930",
-    "role": 2
+    "role": 1
 }
 
 

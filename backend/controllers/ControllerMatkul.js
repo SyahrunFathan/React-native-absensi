@@ -57,7 +57,7 @@ export const getDataMatkulJoinToJadwal = async(req, res) => {
                 foreignKey: 'matkul_id',
             },
             where:{
-                id_matkul: {[Op.notIn]: Sequelize.literal(`(SELECT matkul_id FROM ${ModelKrs.getTableName()})`)}
+                id_matkul: {[Op.notIn]: Sequelize.literal(`(SELECT matkul_id FROM ${ModelKrs.getTableName()} WHERE mhs_id=${req.params.id})`)}
             }
         })
         res.status(200).json({result: response})
@@ -65,23 +65,3 @@ export const getDataMatkulJoinToJadwal = async(req, res) => {
         res.status(500).json({message: error})
     }
 }
-
-// export const getDataByUser = async(req, res) => {
-//     try {
-//         const response = await ModelKrs.findAll({
-//             include: {
-//                 model: ModelJadwal,
-//                 as: 'jadwal',
-//                 foreignKey: 'matkul_id',
-//             },
-//             where: {
-//                 mhs_id: {
-//                     [Op.in]: Sequelize.literal(`(SELECT )`)
-//                 }
-//             }
-//         })
-//         res.status(200).json({result: response})
-//     } catch (error) {
-//         res.status(500).json({message: error})
-//     }
-// }

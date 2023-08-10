@@ -2,7 +2,6 @@ import { Sequelize } from "sequelize";
 import db from '../config/Database.js';
 import ModelDosen from "./ModelDosen.js";
 import ModelJadwal from "./ModelJadwal.js";
-import ModelKrs from "./ModelKrs.js";
 
 const {DataTypes} = Sequelize;
 
@@ -30,6 +29,5 @@ const ModelMatkul = db.define('tb_matkul',{
 
 ModelMatkul.belongsTo(ModelDosen, {foreignKey: 'dosen_id'});
 ModelMatkul.hasMany(ModelJadwal, {foreignKey: 'matkul_id', as: 'jadwal'})
-ModelMatkul.hasMany(ModelKrs, {foreignKey: 'matkul_id'})
 
 export default ModelMatkul;

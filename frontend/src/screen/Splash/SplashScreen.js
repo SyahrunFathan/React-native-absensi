@@ -29,9 +29,6 @@ const SplashScreen = ({navigation}) => {
         }
       }, 1500);
     };
-    // setTimeout(() => {
-    //   navigation.replace('Start');
-    // }, 1500);
     NetInfo.addEventListener(handleConnectInternet);
   },[])
   return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getData } from "../storage/Storage";
 
-const API = axios.create({baseURL: 'http://192.168.1.12:5001'});
+const API = axios.create({baseURL: 'http://192.168.1.2:5001'});
 
 API.interceptors.request.use(async req => {
   const response = await getData('profile');
@@ -62,12 +62,13 @@ export const createDataMataKuliah = async data =>
   API.post('/mata_kuliah/create_data', data);
 export const generatorCode = async () => API.get('/mata_kuliah/generator_code');
 export const getDataMatkul = async () => API.get('/mata_kuliah/get_data');
-export const getDataMatkulJoinToJadwal = async () =>
-  API.get('/mata_kuliah/get_data_join');
+export const getDataMatkulJoinToJadwal = async id =>
+  API.get(`/mata_kuliah/get_data_join/${id}`);
 
 // Jadwal
 export const postJadwal = async data => API.post('/jadwal/post', data);
 
 // Krs
 export const postKrs = async data => API.post('/krs/post_krs', data);
-export const getDataKrs = async id => API.get(`/krs/get_data_krs/${id}`);
+export const getDataKrsJoin = async id => API.get(`/krs/get_data/${id}`);
+export const deleteKrs = async id => API.delete(`/krs/delete/${id}`);
