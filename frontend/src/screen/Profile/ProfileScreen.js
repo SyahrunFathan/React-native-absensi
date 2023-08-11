@@ -11,7 +11,7 @@ import {
 import COLORS from '../../assets/styles/Colors';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import {Default} from '../../assets';
-import {Logout, getData, removeData} from '../../utils';
+import {getData} from '../../utils';
 
 const ProfileScreen = ({navigation}) => {
   const [profile, setProfile] = useState([]);
@@ -57,6 +57,16 @@ const ProfileScreen = ({navigation}) => {
                 : 'Admin'}
             </Text>
           </View>
+        </View>
+      </View>
+      <View style={style.contentBody}>
+        <View style={style.buttonContent}>
+          <TouchableOpacity style={style.buttonExport}>
+            <Text style={style.textButton}>Download KRS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.buttonExport}>
+            <Text style={style.textButton}>Download KHS</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -108,6 +118,26 @@ const style = StyleSheet.create({
     color: COLORS.grey,
     fontSize: 16,
   },
+  contentBody: {
+    marginTop: 20,
+    marginBottom: 5,
+    borderTopWidth: 1,
+    padding: 20,
+    marginHorizontal: 10,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  buttonExport: {
+    backgroundColor: COLORS.danger,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    elevation: 2,
+    borderRadius: 10,
+  },
+  textButton: {color: COLORS.white, fontSize: 16},
 });
 
 export default ProfileScreen;

@@ -53,7 +53,7 @@ const ProfileUpdateScreen = () => {
       const response = await getData('profile');
       setId(response?.result?.id);
       setUsername(response?.result?.name);
-      setTempatLahir(response?.result?.tempat);
+      setTempatLahir(response?.result?.tempat || '');
       setTanggalLahir(new Date(response?.result?.tanggal));
       setAlamat(response?.result?.alamat);
       setTelpon(response?.result?.telp);

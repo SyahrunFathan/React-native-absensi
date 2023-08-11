@@ -10,6 +10,7 @@ const Input = ({
   keyboardType,
   editable,
   autoFocus,
+  maxLength,
 }) => {
   return (
     <TextInput
@@ -21,6 +22,7 @@ const Input = ({
       keyboardType={keyboardType}
       editable={editable}
       autoFocus={autoFocus}
+      maxLength={maxLength}
     />
   );
 };
@@ -29,6 +31,7 @@ const style = StyleSheet.create({
   formInput: {
     width: '100%',
     paddingLeft: 14,
+    paddingRight: 32,
     fontSize: 16,
     borderColor: COLORS.grey,
     borderWidth: 1,

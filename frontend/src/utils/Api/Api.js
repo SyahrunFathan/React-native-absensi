@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getData } from "../storage/Storage";
 
-const API = axios.create({baseURL: 'http://192.168.1.2:5001'});
+const API = axios.create({baseURL: 'http://192.168.1.12:5001'});
 
 API.interceptors.request.use(async req => {
   const response = await getData('profile');
@@ -30,6 +30,12 @@ export const updateMahasiswa = async (id, data) => {
     },
   });
 };
+
+export const createDataMahasiswa = async data =>
+  API.post('/auth/register', data);
+
+export const generatorNimMahasiswa = async () =>
+  API.get('/mahasiswa/nim_mahasiswa');
 
 // Admin
 export const updateDataAdmin = async (id, data) => {

@@ -18,6 +18,8 @@ import {
   PasswordUpdate,
   MatkulScreen,
   KrsScreen,
+  AddDosenScreen,
+  AddMahasiswaScreen,
 } from '../screen';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import COLORS from '../assets/styles/Colors';
@@ -60,6 +62,12 @@ const MainApp = () => {
               ? 'checkmark-done-circle'
               : 'checkmark-done-circle-outline';
             size = focused ? size + 5 : size;
+          } else if (route.name === 'AddDosen') {
+            iconName = focused ? 'person-add' : 'person-add-outline';
+            size = focused ? size + 5 : size;
+          } else if (route.name === 'AddMahasiswa') {
+            iconName = focused ? 'add-circle' : 'add-circle-outline';
+            size = focused ? size + 5 : size;
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -80,19 +88,38 @@ const MainApp = () => {
         component={HomeScreen}
         options={{headerShown: false}}
       />
-      <Tab.Screen
-        name="Jadwal"
-        component={JadwalScreen}
-        options={{
-          title: 'Jadwal Saya',
-          headerShown: true,
-          headerTitleAlign: 'center',
-        }}
-      />
+      {profile?.role === 1 && profile?.role === 2 ? (
+        <Tab.Screen
+          name="Jadwal"
+          component={JadwalScreen}
+          options={{
+            title: 'Jadwal Saya',
+            headerShown: true,
+            headerTitleAlign: 'center',
+          }}
+        />
+      ) : (
+        <Tab.Screen
+          name="AddMahasiswa"
+          component={AddMahasiswaScreen}
+          options={{
+            headerShown: true,
+            title: 'Mahasiswa',
+            headerTitle: 'Tambah Mahasiswa',
+            headerTitleAlign: 'center',
+          }}
+        />
+      )}
       {profile?.role === 1 ? (
         <Tab.Screen name="Kehadiran" component={KehadiranScreen} />
-      ) : (
+      ) : profile?.role === 2 ? (
         <Tab.Screen name="Absen" component={AbsenScreen} />
+      ) : (
+        <Tab.Screen
+          name="AddDosen"
+          component={AddDosenScreen}
+          options={{headerShown: false, title: 'Dosen'}}
+        />
       )}
       <Tab.Screen
         name="Profile"

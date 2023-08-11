@@ -3,6 +3,7 @@ import ModelMahasiswa from '../models/ModelMahasiswa.js'
 import fs from 'fs'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { format } from 'date-fns'
 
 
 const __filename = fileURLToPath(import.meta.url)
@@ -86,5 +87,21 @@ export const updateMahasiswa = async(req, res) => {
         } catch (error) {
             res.status(500).json({message: error})
         }
+    }
+}
+
+export const generatorNim = async(req, res) => {
+    try {
+        const mahasiswa = await ModelMahasiswa.findOne({
+            order: [['id_mhs','DESC']]
+        })
+        const date = new Date().getFullYear().toString().slice(-2)
+        const last_nim = mahasiswa.nim_mhs.split(`F551${date}`)[1]
+        const newNim = parseInt(last_nim, 10) + 1
+        const formatNim = `F551${date}${newNim.toString().padStart(3, '0')}`
+
+        res.status(200).json({result: formatNim})
+    } catch (error) {
+        res.status(500).json({message: error})
     }
 }
